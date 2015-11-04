@@ -7,6 +7,6 @@
 		"url": "https://github.com/dmail/service-cache"
 	},
 	"dependencies": {
-		"@dmail/http": "git+https://github.com/dmail/http"
+		"@dmail/rest": "git+https://github.com/dmail/rest"
 	}
 }
