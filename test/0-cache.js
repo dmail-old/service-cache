@@ -4,7 +4,7 @@ import Response from '../../lib/response.js';
 
 export function suite(add){
 
-	add("maxLength", function(test){
+	add("maxLength", function(){
 		var cache = Cache.create();
 		cache.maxLength = 1;
 
@@ -14,13 +14,13 @@ export function suite(add){
 		var resB = Response.create();
 
 		cache.set(reqA, resA);
-		test.equal(cache.has(reqA), true);
-		test.equal(cache.length, 1);
+		this.equal(cache.has(reqA), true);
+		this.equal(cache.length, 1);
 		cache.set(reqB, resB);
-		test.equal(cache.has(reqA), false);
+		this.equal(cache.has(reqA), false);
 	});
 
-	add("byteLimit", function(test){
+	add("byteLimit", function(){
 		var cache = Cache.create();
 		cache.byteLimit = 10;
 
@@ -39,9 +39,9 @@ export function suite(add){
 		});
 
 		cache.set(requestA, responseA);
-		test.equal(cache.byteLength, 5);
+		this.equal(cache.byteLength, 5);
 
-		return test.rejectWith(new Promise(function(){
+		return this.rejectWith(new Promise(function(){
 			cache.set(requestA, responseB);
 		}), {name: 'RangeError'});
 	});
